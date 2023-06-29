@@ -1,7 +1,18 @@
+"use client";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import TopLeftImg from "./components/TopLeftImg";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Sora } from "next/font/google";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Transition from "./components/Transition";
 
-const inter = Inter({ subsets: ["latin"] });
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata = {
   title: "Myk Portfolio",
@@ -13,9 +24,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
+      >
+        <TopLeftImg />
+        <Nav />
+        <Header />
+
+        <AnimatePresence mode="wait">
+          <motion.div key={pathname} className="h-full">
+            <Transition />
+            <main>{children}</main>
+          </motion.div>
+        </AnimatePresence>
+      </body>
     </html>
   );
 }

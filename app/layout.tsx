@@ -37,7 +37,7 @@ export default function RootLayout({
         <AnimatePresence mode="wait">
           <motion.div key={pathname} className="h-full">
             <Transition />
-            <main>{children}</main>
+            {children}
           </motion.div>
         </AnimatePresence>
       </body>

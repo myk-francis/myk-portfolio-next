@@ -1,8 +1,10 @@
 "use client";
-import Image from "next/image";
+
 import ProjectsBtn from "./components/ProjectsBtn";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
+import Avatar from "./components/Avatar";
+import ParticlesContainer from "./components/ParticlesContainer";
 
 export default function Home() {
   return (
@@ -26,7 +28,7 @@ export default function Home() {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="max-w-sm xl:max-w-lg mx-auto xl:mx-8 mb-10 xl:mb-3 leading-[1.8] text-white/60 font-light text-xs xl:text-sm"
+            className="max-w-sm xl:max-w-lg mx-auto xl:mx-0 mb-10 xl:mb-15 leading-[1.8] text-white/60 font-light text-xs xl:text-sm"
           >
             I’m a full-stack developer specializing in building exceptional
             digital experiences. Currently, I’m focused on building responsive
@@ -47,8 +49,22 @@ export default function Home() {
           </motion.div>
         </div>
       </div>
-      {/* image */}
-      <div>Image</div>
+      <div className="w-[1200px] h-full absolute right-0 bottom-0">
+        {/* bg img */}
+        <div className="bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"></div>
+        {/* particles */}
+        <ParticlesContainer />
+        <motion.div
+          variants={fadeIn("up", 0.5)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="w-full h-full max-w-[700px] max-h-[600px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
+        >
+          <Avatar />
+        </motion.div>
+      </div>
     </div>
   );
 }

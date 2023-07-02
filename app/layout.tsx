@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <TopLeftImg />
         <Nav />
-        <Header />
+        {/* <Header /> */}
 
         <AnimatePresence mode="wait">
           <motion.div key={pathname} className="h-full">
